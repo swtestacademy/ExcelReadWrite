@@ -41,38 +41,38 @@ public class ExcelUtil {
     //Column Number
     public static int columnNumber;
 
-
     //Setter and Getters of row and columns
-    public static void setRowNumber (int pRowNumber) {
+    public static void setRowNumber(int pRowNumber) {
         rowNumber = pRowNumber;
     }
 
-    public static int getRowNumber () {
+    public static int getRowNumber() {
         return rowNumber;
     }
 
-    public static void setColumnNumber (int pColumnNumber) {
+    public static void setColumnNumber(int pColumnNumber) {
         columnNumber = pColumnNumber;
     }
 
-    public static int getColumnNumber () {
+    public static int getColumnNumber() {
         return columnNumber;
     }
 
     // This method has two parameters: "Test data excel file name" and "Excel sheet name"
     // It creates FileInputStream and set excel file and excel sheet to excelWBook and excelWSheet variables.
-    public static void setExcelFileSheet (String sheetName)  {
+    public static void setExcelFileSheet(String sheetName) {
         //MAC or Windows Selection for excel path
-        if (Platform.getCurrent().toString().equalsIgnoreCase("MAC")){
+        if (Platform.getCurrent().toString().equalsIgnoreCase("MAC")) {
             testDataExcelPath = currentDir + "//src//test//java//resources//";
-        } else if(Platform.getCurrent().toString().contains("WIN")){
-            testDataExcelPath = currentDir + "\\src\\test\\java\\resources\\";}
+        } else if (Platform.getCurrent().toString().contains("WIN")) {
+            testDataExcelPath = currentDir + "\\src\\test\\java\\resources\\";
+        }
         try {
             // Open the Excel file
             FileInputStream ExcelFile = new FileInputStream(testDataExcelPath + testDataExcelFileName);
             excelWBook = new XSSFWorkbook(ExcelFile);
             excelWSheet = excelWBook.getSheet(sheetName);
-        } catch (Exception e){
+        } catch (Exception e) {
             try {
                 throw (e);
             } catch (IOException e1) {
@@ -81,32 +81,32 @@ public class ExcelUtil {
         }
     }
 
-    // This method reads the test data from the Excel cell.
-    // We are passing parameters as row number and Column number
-    public static String getCellData (int RowNum, int ColNum) {
-        try{
+    //This method reads the test data from the Excel cell.
+    //We are passing row number and column number as parameters.
+    public static String getCellData(int RowNum, int ColNum) {
+        try {
             cell = excelWSheet.getRow(RowNum).getCell(ColNum);
             DataFormatter formatter = new DataFormatter();
             String cellData = formatter.formatCellValue(cell);
             return cellData;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw (e);
         }
     }
 
-    //This method takes row number as parameter and returns the data of given row number.
-    public static XSSFRow getRowData (int RowNum) {
-        try{
+    //This method takes row number as a parameter and returns the data of given row number.
+    public static XSSFRow getRowData(int RowNum) {
+        try {
             row = excelWSheet.getRow(RowNum);
             return row;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw (e);
         }
     }
 
     //This method gets excel file, row and column number and set a value to the that cell.
-    public static void setCellData (String value,  int RowNum, int ColNum) {
-        try{
+    public static void setCellData(String value, int RowNum, int ColNum) {
+        try {
             row = excelWSheet.getRow(RowNum);
             cell = row.getCell(ColNum);
             if (cell == null) {
@@ -120,7 +120,7 @@ public class ExcelUtil {
             excelWBook.write(fileOut);
             fileOut.flush();
             fileOut.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             try {
                 throw (e);
             } catch (IOException e1) {

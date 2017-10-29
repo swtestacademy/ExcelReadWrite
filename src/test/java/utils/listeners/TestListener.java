@@ -112,7 +112,7 @@ public class TestListener extends BaseTest implements ITestListener {
         System.out.println("Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
 
         //Update the test result on excel sheet
-        ExcelUtil.setCellData("FAILED", ExcelUtil.getRowNumber(), ExcelUtil.getColumnNumber());
+        //ExcelUtil.setCellData("FAILED", ExcelUtil.getRowNumber(), ExcelUtil.getColumnNumber());
     }
 
 }
