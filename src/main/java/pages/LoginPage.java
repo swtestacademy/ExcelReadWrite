@@ -19,7 +19,7 @@ public class LoginPage extends BasePage {
     String passwordId = "password";
     String loginButtonId = "loginButton";
     String errorMessageUsernameXpath = "//*[@id=\"loginForm\"]/div[1]/div/div";
-    String errorMessagePasswordXpath = "//*[@id=\"loginForm\"]/div[2]/div/div ";
+    String errorMessagePasswordXpath = "//*[@id=\"loginForm\"]/div[2]/div/div";
 
     //*********Page Methods*********
     @Step("Login Step with username: {0}, password: {1}, for method: {method} step...")

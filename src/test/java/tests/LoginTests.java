@@ -1,6 +1,8 @@
 package tests;
 
 import io.qameta.allure.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -55,7 +57,7 @@ public class LoginTests extends BaseTest {
         ExcelUtil.setColumnNumber(5);
 
         //*************ASSERTIONS***********************
-        Thread.sleep(500);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"loginForm\"]/div[2]/div/div")));
         //Verify password message by using excel's 2st row, 5th column
         //Row and Column numbers starting from 0. Thus we need to write 1 and 4, instead of 2 and 5!
         loginPage.verifyLoginPassword(ExcelUtil.getCellData(1,4));
@@ -87,7 +89,7 @@ public class LoginTests extends BaseTest {
         ExcelUtil.setColumnNumber(5);
 
         //*************ASSERTIONS***********************
-        Thread.sleep(500);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"loginForm\"]/div[1]/div/div")));
         //Verify by 3rd row and 4th column
         loginPage.verifyLoginUserName(ExcelUtil.getCellData(2,3));
         //Verify by 3rd row and 5th column
